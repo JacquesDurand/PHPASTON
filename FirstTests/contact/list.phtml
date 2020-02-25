@@ -1,0 +1,28 @@
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th class="col-auto">Firstname</th>
+            <th class="col-auto">Lastname</th>
+            <th class="col-auto">Email</th>
+            <th class="col-auto">Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($contacts as $contact) : ?>
+            <tr>
+                <td class="row-auto">
+                    <?= $contact['firstname'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $contact['lastname'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $contact['email'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $contact['phone'] ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
