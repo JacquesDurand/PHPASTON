@@ -1,0 +1,31 @@
+<form class="form-group" action="" method="POST" id="article-form">
+    <div>
+        <label for="title">
+            Title
+        </label>
+        <input class="form-control" type="text" name="title" id="title" value="<?= $title ?>">
+    </div>
+    <div>
+        <label for="teaser">Teaser</label>
+        <input class="form-control" type="text" name="teaser" id="teaser" value="<?= $teaser ?>">
+    </div>
+    <div>
+        <label for="category">Category</label>
+        <select class="form-control" name="category" id="category">
+            <?php foreach ($options as $option) : ?>
+                <option value="<?= $option ?>"><?= $option ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <label for="published">Published</label>
+        <input class="form-check" type="checkbox" id="published" name="published">
+    </div>
+    <div>
+        <label for="content">Content</label>
+        <textarea class="form-control" name="content" id="content" cols="30" rows="10" form="article-form"><?= $content ?></textarea>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Sauvegarder</button>
+    </div>
+</form>

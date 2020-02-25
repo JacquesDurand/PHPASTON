@@ -1,0 +1,40 @@
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th class="col-auto">Id</th>
+            <th class="col-auto">Title</th>
+            <th class="col-auto">Teaser</th>
+            <th class="col-auto">Content</th>
+            <th class="col-auto">Category</th>
+            <th class="col-auto">Published</th>
+            <th class="col-auto">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($articles as $article) : ?>
+            <tr>
+                <td class="row-auto">
+                    <?= $article['id'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $article['title'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $article['teaser'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $article['content'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $article['category'] ?>
+                </td>
+                <td class="row-auto">
+                    <?= $article['published'] ?>
+                </td>
+                <td class="row-auto">
+                    <a href="deleteEntry.php">X</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
