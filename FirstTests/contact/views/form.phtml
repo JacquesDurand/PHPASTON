@@ -1,19 +1,29 @@
+<?php if (count($errors) > 0) : ?>
+    <ul class="alert alert-warning" style="list-style-type: none"> Errors
+        <?php foreach ($errors as $e) : ?>
+            <li class="alert alert-danger" style="list-style-type: none"><?= $e ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
 <form class="form-group" action="" method="POST">
     <div>
         <label for="firstname">First Name</label>
-        <input class="form-control" type="text" name="firstname" value="<?=$firstname?>">
+        <input class="form-control" type="text" name="firstname" value="<?= $firstname ?>">
     </div>
     <div>
         <label for="lastname">Last Name</label>
-        <input class="form-control" type="text" name="lastname" value="<?=$lastname?>">
+        <input class="form-control" type="text" name="lastname" value="<?= $lastname ?>">
     </div>
     <div>
         <label for="email">Email</label>
-        <input class="form-control" type="email" name="email" value="<?=$email?>">
+        <input class="form-control" type="email" name="email" value="<?= $email ?>">
     </div>
     <div>
         <label for="phone">Phone</label>
-        <input class="form-control" type="text" name="phone" value="<?=$phone?>">
+        <input class="form-control" type="text" name="phone" value="<?= $phone ?>">
     </div>
-    <button class="btn btn-primary" type="submit">Sauvegarder</button>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Sauvegarder</button>
+    </div>
 </form>
