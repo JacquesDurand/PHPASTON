@@ -34,4 +34,4 @@ if ($handle !== false) {
     };
 }
 
-include 'page.phtml';
+include 'views/page.phtml';
