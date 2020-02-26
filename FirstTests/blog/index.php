@@ -1,18 +1,18 @@
 <?php
 
 require 'lib/validators.php';
+require 'lib/csv.php';
+$articles = loadArticles('articles.csv');
 
 $title = $_POST['title'] ?? '';
 $teaser = $_POST['teaser'] ?? '';
 $content = $_POST['content'] ?? '';
 $published = isset($_POST['published']) ? 1 : 0;
 $category = $_POST['category'] ?? '';
-$id ;
-
 $options = ['cat1', 'cat2', 'cat3'];
 
-$articles = [];
 $errors = [];
+$id = sizeof($articles);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -34,24 +34,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $published = 'non publié';
         }
-
-        $row = "$title,$teaser,$content,$category,$published\n";
-        file_put_contents('articles.csv', $row, FILE_APPEND);
+        $id++;
+        $articles[] = [
+            'id' => $id,
+            'title' => $title,
+            'teaser' => $teaser,
+            'content' => $content,
+            'category' => $category,
+            'published' => $published
+        ];
+        saveFile('articles.csv', $articles);
     }
 }
 
-$handle = fopen('articles.csv', 'r');
-
-if ($handle !== false) {
-    while (($data = fgetcsv($handle, 1024)) !== false) {
-        $articles[] = [
-            'title' => $data[0],
-            'teaser' => $data[1],
-            'content' => $data[2],
-            'category' => $data[3],
-            'published' => $data[4],
-        ];
-    };
+$queryString = $_SERVER['QUERY_STRING'] ?? '';
+if (strpos($queryString, 'action=remove') !== false) {
+    $id = substr($queryString, -1);
+    array_splice($articles, intval($id), 1);
+    saveFile('articles.csv', $articles);
+    loadArticles('articles.csv');
+    header('location: http://localhost:80/PHPASTON/FirstTests/blog/');
 }
 
 
