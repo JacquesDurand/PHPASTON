@@ -1,3 +1,11 @@
+<?php if (count($errors) > 0) : ?>
+    <ul class="alert alert-warning" style="list-style-type: none"> Errors
+        <?php foreach ($errors as $e) : ?>
+            <li class="alert alert-danger" style="list-style-type: none"><?= $e ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
 <form class="form-group" action="" method="POST" id="article-form">
     <div>
         <label for="title">

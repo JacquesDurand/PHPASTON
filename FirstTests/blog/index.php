@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'published' => $published
         ];
         saveFile('articles.csv', $articles);
+        header('location: http://localhost:80/PHPASTON/FirstTests/blog/');
     }
 }
 
